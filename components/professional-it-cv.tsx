@@ -8,7 +8,23 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { Mail, Phone, Linkedin, Award, GraduationCap, Briefcase, BookOpen, User, Moon, Sun, Server, Shield, Code, Database } from 'lucide-react'
+import { 
+  Award, 
+  BookOpen, 
+  Briefcase, 
+  Code, 
+  Database, 
+  GraduationCap, 
+  Linkedin, 
+  Mail, 
+  Moon, 
+  Phone, 
+  Server, 
+  Shield, 
+  Sun, 
+  User, 
+  Wrench 
+} from 'lucide-react'
 
 export function ProfessionalItCv() {
   // Controls the dark/light mode theme
