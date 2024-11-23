@@ -35,39 +35,19 @@ export function ProfessionalItCv() {
   const fullText = 'Driving Innovation and Security in IT Operations'
   const typingSpeed = 100 // milliseconds per character
 
-  // Create typing sound function
-  const playTypingSound = () => {
-    try {
-      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)()
-      const oscillator = audioContext.createOscillator()
-      const gainNode = audioContext.createGain()
-
-      oscillator.connect(gainNode)
-      gainNode.connect(audioContext.destination)
-
-      oscillator.type = 'square'
-      oscillator.frequency.setValueAtTime(800, audioContext.currentTime)
-      
-      gainNode.gain.setValueAtTime(0.05, audioContext.currentTime)
-      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1)
-
-      oscillator.start()
-      oscillator.stop(audioContext.currentTime + 0.1)
-    } catch (err) {
-      console.log('Audio playback error:', err)
-    }
-  }
-
-  // Typewriter effect with sound
   useEffect(() => {
-    if (text.length < fullText.length) {
-      const timeout = setTimeout(() => {
-        setText(fullText.slice(0, text.length + 1))
-        playTypingSound()
-      }, typingSpeed)
-      return () => clearTimeout(timeout)
-    }
-  }, [text])
+    let currentIndex = 0
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setText(fullText.slice(0, currentIndex))
+        currentIndex++
+      } else {
+        clearInterval(typingInterval)
+      }
+    }, typingSpeed)
+
+    return () => clearInterval(typingInterval)
+  }, [])
 
   // Manages the expansion state of job experience sections
   const [expandedJobs, setExpandedJobs] = useState<{[key: string]: boolean}>({
@@ -475,7 +455,7 @@ export function ProfessionalItCv() {
                   <Award className="h-6 w-6 mr-3 text-blue-600" />
                   Certifications
                 </h2>
-                <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'}`}>
+                <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'}`}>
                   <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                     <li className="flex group relative">
                       <span className="mr-2">•</span>
