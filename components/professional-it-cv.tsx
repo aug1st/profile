@@ -469,98 +469,100 @@ export function ProfessionalItCv() {
               </div>
             </section>
 
-            <section className="mb-12">
-              <h2 className={`text-2xl font-semibold mb-6 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                <Award className="h-6 w-6 mr-3 text-blue-600" />
-                Certifications
-              </h2>
-              <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow`}>
-                <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                  <li className="flex group relative">
-                    <span className="mr-2">•</span>
-                    <span className="relative">
-                      AWS Certified SysOps Administrator – Associate
-                      <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
-                        <div className="relative">
-                          A certification validates skills in deploying, managing, and operating scalable and fault-tolerant systems on AWS. It focuses on monitoring, security, networking, automation, and operational best practices. Ideal for system administrators, it prepares candidates to manage AWS environments effectively and securely.
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+              <section>
+                <h2 className={`text-2xl font-semibold mb-6 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  <Award className="h-6 w-6 mr-3 text-blue-600" />
+                  Certifications
+                </h2>
+                <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow h-full`}>
+                  <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                    <li className="flex group relative">
+                      <span className="mr-2">•</span>
+                      <span className="relative">
+                        AWS Certified SysOps Administrator – Associate
+                        <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
+                          <div className="relative">
+                            A certification validates skills in deploying, managing, and operating scalable and fault-tolerant systems on AWS. It focuses on monitoring, security, networking, automation, and operational best practices. Ideal for system administrators, it prepares candidates to manage AWS environments effectively and securely.
+                          </div>
                         </div>
-                      </div>
-                    </span>
-                  </li>
-                  <li className="flex group relative">
-                    <span className="mr-2">•</span>
-                    <span className="relative">
-                      AWS Certified Developer – Associate
-                      <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
-                        <div className="relative">
-                          A certification validates proficiency in designing, developing, and deploying cloud-based applications on AWS. It focuses on core AWS services, application security, and troubleshooting. Ideal for developers, it equips candidates to build and optimise scalable, secure, and high-performing cloud applications.
+                      </span>
+                    </li>
+                    <li className="flex group relative">
+                      <span className="mr-2">•</span>
+                      <span className="relative">
+                        AWS Certified Developer – Associate
+                        <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
+                          <div className="relative">
+                            A certification validates proficiency in designing, developing, and deploying cloud-based applications on AWS. It focuses on core AWS services, application security, and troubleshooting. Ideal for developers, it equips candidates to build and optimise scalable, secure, and high-performing cloud applications.
+                          </div>
                         </div>
-                      </div>
-                    </span>
-                  </li>
-                  <li className="flex group relative">
-                    <span className="mr-2">•</span>
-                    <span className="relative">
-                      AWS Certified Solutions Architect – Associate
-                      <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
-                        <div className="relative">
-                          A certification validates the ability to design and deploy scalable, cost-efficient, and reliable systems on AWS. It focuses on architectural best practices, security, and high availability. Ideal for solution architects, it equips candidates to create cloud solutions aligned with business requirements.
+                      </span>
+                    </li>
+                    <li className="flex group relative">
+                      <span className="mr-2">•</span>
+                      <span className="relative">
+                        AWS Certified Solutions Architect – Associate
+                        <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
+                          <div className="relative">
+                            A certification validates the ability to design and deploy scalable, cost-efficient, and reliable systems on AWS. It focuses on architectural best practices, security, and high availability. Ideal for solution architects, it equips candidates to create cloud solutions aligned with business requirements.
+                          </div>
                         </div>
-                      </div>
-                    </span>
-                  </li>
-                  <li className="flex group relative">
-                    <span className="mr-2">•</span>
-                    <span className="relative">
-                      Practitioner Certificate in Personal Data Protection (SG)
-                      <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
-                        <div className="relative">
-                          This certificate equips Data Protection Officers and professionals with the knowledge and skills to implement and manage data protection programs under the PDPA. It covers key areas like risk management, breach response, and compliance. Certification is co-issued by the PDPC and IAPP, enhancing credibility and expertise in data governance.
+                      </span>
+                    </li>
+                    <li className="flex group relative">
+                      <span className="mr-2">•</span>
+                      <span className="relative">
+                        Practitioner Certificate in Personal Data Protection (SG)
+                        <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
+                          <div className="relative">
+                            This certificate equips Data Protection Officers and professionals with the knowledge and skills to implement and manage data protection programs under the PDPA. It covers key areas like risk management, breach response, and compliance. Certification is co-issued by the PDPC and IAPP, enhancing credibility and expertise in data governance.
+                          </div>
                         </div>
-                      </div>
-                    </span>
-                  </li>
-                  <li className="flex group relative">
-                    <span className="mr-2">•</span>
-                    <span className="relative">
-                      Lean Six Sigma (LSS) Yellow Belt Certification (2020)
-                      <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
-                        <div className="relative">
-                          This focuses on foundational principles of Lean Six Sigma methodologies, equipping individuals to support process improvement projects. Participants learn to identify waste, improve efficiency, and assist in problem-solving under the guidance of Green or Black Belts. Ideal for team members, it enhances skills in basic quality tools and continuous improvement techniques.
+                      </span>
+                    </li>
+                    <li className="flex group relative">
+                      <span className="mr-2">•</span>
+                      <span className="relative">
+                        Lean Six Sigma (LSS) Yellow Belt Certification (2020)
+                        <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
+                          <div className="relative">
+                            This focuses on foundational principles of Lean Six Sigma methodologies, equipping individuals to support process improvement projects. Participants learn to identify waste, improve efficiency, and assist in problem-solving under the guidance of Green or Black Belts. Ideal for team members, it enhances skills in basic quality tools and continuous improvement techniques.
+                          </div>
                         </div>
-                      </div>
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </section>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </section>
 
-            <section className="mb-12">
-              <h2 className={`text-2xl font-semibold mb-6 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                <BookOpen className="h-6 w-6 mr-3 text-blue-600" />
-                Training
-              </h2>
-              <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow`}>
-                <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                  <li className="flex">
-                    <span className="mr-2">•</span>
-                    <span>ISO/IEC 27001:2022 ISMS Internal Auditor</span>
-                  </li>
-                  <li className="flex">
-                    <span className="mr-2">•</span>
-                    <span>Data Analytics Using Power BI</span>
-                  </li>
-                  <li className="flex">
-                    <span className="mr-2">•</span>
-                    <span>NICF - Microsoft Azure Administrator</span>
-                  </li>
-                  <li className="flex">
-                    <span className="mr-2">•</span>
-                    <span>NICF - Certified Information Systems Auditor</span>
-                  </li>
-                </ul>
-              </div>
-            </section>
+              <section>
+                <h2 className={`text-2xl font-semibold mb-6 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  <BookOpen className="h-6 w-6 mr-3 text-blue-600" />
+                  Training
+                </h2>
+                <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow h-full`}>
+                  <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>ISO/IEC 27001:2022 ISMS Internal Auditor</span>
+                    </li>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>Data Analytics Using Power BI</span>
+                    </li>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>NICF - Microsoft Azure Administrator</span>
+                    </li>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>NICF - Certified Information Systems Auditor</span>
+                    </li>
+                  </ul>
+                </div>
+              </section>
+            </div>
 
             <section>
               <h2 className={`text-2xl font-semibold mb-4 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
