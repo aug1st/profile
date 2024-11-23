@@ -455,7 +455,7 @@ export function ProfessionalItCv() {
                   <Award className="h-6 w-6 mr-3 text-blue-600" />
                   Certifications
                 </h2>
-                <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'}`}>
+                <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow`}>
                   <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                     <li className="flex group relative">
                       <span className="mr-2">•</span>
@@ -521,7 +521,7 @@ export function ProfessionalItCv() {
                   <BookOpen className="h-6 w-6 mr-3 text-blue-600" />
                   Training
                 </h2>
-                <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'}`}>
+                <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow`}>
                   <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                     <li className="flex">
                       <span className="mr-2">•</span>
@@ -538,6 +538,10 @@ export function ProfessionalItCv() {
                     <li className="flex">
                       <span className="mr-2">•</span>
                       <span>NICF - Certified Information Systems Auditor</span>
+                    </li>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>ITIL v3 Foundation for IT Service Management</span>
                     </li>
                   </ul>
                 </div>
