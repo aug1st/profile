@@ -19,11 +19,35 @@ export function ProfessionalItCv() {
   const fullText = 'Driving Innovation and Security in IT Operations'
   const typingSpeed = 100 // milliseconds per character
 
-  // Typewriter effect
+  // Create typing sound function
+  const playTypingSound = () => {
+    try {
+      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)()
+      const oscillator = audioContext.createOscillator()
+      const gainNode = audioContext.createGain()
+
+      oscillator.connect(gainNode)
+      gainNode.connect(audioContext.destination)
+
+      oscillator.type = 'sine'
+      oscillator.frequency.setValueAtTime(800, audioContext.currentTime)
+      
+      gainNode.gain.setValueAtTime(0.05, audioContext.currentTime)
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1)
+
+      oscillator.start()
+      oscillator.stop(audioContext.currentTime + 0.1)
+    } catch (err) {
+      console.log('Audio playback error:', err)
+    }
+  }
+
+  // Typewriter effect with sound
   useEffect(() => {
     if (text.length < fullText.length) {
       const timeout = setTimeout(() => {
         setText(fullText.slice(0, text.length + 1))
+        playTypingSound()
       }, typingSpeed)
       return () => clearTimeout(timeout)
     }
@@ -88,6 +112,8 @@ export function ProfessionalItCv() {
     }
   }, [])
 
+  const name = 'Calvin Wong'
+
   return (
     <div 
       className={`min-h-screen ${darkMode ? 'dark bg-gray-900' : 'bg-gray-100'}`}
@@ -108,7 +134,7 @@ export function ProfessionalItCv() {
             <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center max-w-5xl mx-auto">
               <div className="relative">
                 <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-1 h-16 bg-blue-400 opacity-50 rounded-full"></div>
-                <h1 className="text-5xl font-bold text-white tracking-tight mb-2">Calvin Wong</h1>
+                <h1 className="text-5xl font-bold text-white tracking-tight mb-2">{name}</h1>
                 <p className="text-xl text-blue-100 font-light tracking-wide relative">
                   {text}
                   <span className="animate-pulse">|</span>
