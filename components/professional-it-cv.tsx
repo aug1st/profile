@@ -386,13 +386,29 @@ export function ProfessionalItCv() {
                       </div>
                     </span>
                   </li>
-                  <li className="flex">
+                  <li className="flex group relative">
                     <span className="mr-2">•</span>
-                    <span>AWS Certified Developer – Associate (2020)</span>
+                    <span className="relative">
+                      AWS Certified Developer – Associate
+                      <div className="absolute left-0 bottom-full mb-2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
+                        <div className="relative">
+                          A certification validates proficiency in designing, developing, and deploying cloud-based applications on AWS. It focuses on core AWS services, application security, and troubleshooting. Ideal for developers, it equips candidates to build and optimise scalable, secure, and high-performing cloud applications.
+                          <div className="absolute w-3 h-3 bg-blue-600 transform rotate-45 left-4 -bottom-1.5"></div>
+                        </div>
+                      </div>
+                    </span>
                   </li>
-                  <li className="flex">
+                  <li className="flex group relative">
                     <span className="mr-2">•</span>
-                    <span>AWS Certified Solutions Architect – Associate (2020)</span>
+                    <span className="relative">
+                      AWS Certified Solutions Architect – Associate
+                      <div className="absolute left-0 bottom-full mb-2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
+                        <div className="relative">
+                          A certification validates the ability to design and deploy scalable, cost-efficient, and reliable systems on AWS. It focuses on architectural best practices, security, and high availability. Ideal for solution architects, it equips candidates to create cloud solutions aligned with business requirements.
+                          <div className="absolute w-3 h-3 bg-blue-600 transform rotate-45 left-4 -bottom-1.5"></div>
+                        </div>
+                      </div>
+                    </span>
                   </li>
                   <li className="flex">
                     <span className="mr-2">•</span>
@@ -494,7 +510,7 @@ export function ProfessionalItCv() {
           <footer className={`px-6 py-4 border-t ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
             <div className="flex items-center justify-between">
               <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                &copy; {new Date().getFullYear()} Calvin Wong. All rights reserved.
+                Last Update: November 23, 2024 | &copy; {new Date().getFullYear()} Calvin Wong. All rights reserved.
               </p>
               
               <button
