@@ -541,7 +541,7 @@ export function ProfessionalItCv() {
                   <BookOpen className="h-6 w-6 mr-3 text-blue-600" />
                   Training
                 </h2>
-                <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow h-full`}>
+                <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'}`}>
                   <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                     <li className="flex">
                       <span className="mr-2">•</span>
