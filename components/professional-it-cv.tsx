@@ -455,6 +455,114 @@ export function ProfessionalItCv() {
 
             <section className="mb-12">
               <h2 className={`text-2xl font-semibold mb-6 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                <Wrench className="h-6 w-6 mr-3 text-blue-600" />
+                Technical Skills
+              </h2>
+              <div className={`grid grid-cols-1 md:grid-cols-2 gap-6`}>
+                {/* Infrastructure */}
+                <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow`}>
+                  <h3 className={`text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Infrastructure</h3>
+                  <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>AWS Cloud Infrastructure</span>
+                    </li>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>Microsoft Azure</span>
+                    </li>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>VMware vSphere</span>
+                    </li>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>Windows Server</span>
+                    </li>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>Linux Server</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* ERP & Database */}
+                <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow`}>
+                  <h3 className={`text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>ERP & Database</h3>
+                  <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>SAP Business One</span>
+                    </li>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>Microsoft SQL Server</span>
+                    </li>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>MySQL</span>
+                    </li>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>PostgreSQL</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Web & App Coding */}
+                <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow`}>
+                  <h3 className={`text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Web & App Coding</h3>
+                  <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>React.js</span>
+                    </li>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>Next.js</span>
+                    </li>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>Node.js</span>
+                    </li>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>Python</span>
+                    </li>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>PHP</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Compliance */}
+                <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow`}>
+                  <h3 className={`text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Compliance</h3>
+                  <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>ISO/IEC 27001:2022</span>
+                    </li>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>PDPA</span>
+                    </li>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>COBIT</span>
+                    </li>
+                    <li className="flex">
+                      <span className="mr-2">•</span>
+                      <span>ITIL</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <section className="mb-12">
+              <h2 className={`text-2xl font-semibold mb-6 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 <Award className="h-6 w-6 mr-3 text-blue-600" />
                 Certifications
               </h2>
@@ -467,7 +575,6 @@ export function ProfessionalItCv() {
                       <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
                         <div className="relative">
                           A certification validates skills in deploying, managing, and operating scalable and fault-tolerant systems on AWS. It focuses on monitoring, security, networking, automation, and operational best practices. Ideal for system administrators, it prepares candidates to manage AWS environments effectively and securely.
-                          <div className="absolute w-3 h-3 bg-blue-600 transform rotate-45 -left-1.5 top-1/2 -translate-y-1/2"></div>
                         </div>
                       </div>
                     </span>
@@ -479,7 +586,6 @@ export function ProfessionalItCv() {
                       <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
                         <div className="relative">
                           A certification validates proficiency in designing, developing, and deploying cloud-based applications on AWS. It focuses on core AWS services, application security, and troubleshooting. Ideal for developers, it equips candidates to build and optimise scalable, secure, and high-performing cloud applications.
-                          <div className="absolute w-3 h-3 bg-blue-600 transform rotate-45 -left-1.5 top-1/2 -translate-y-1/2"></div>
                         </div>
                       </div>
                     </span>
@@ -491,7 +597,6 @@ export function ProfessionalItCv() {
                       <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
                         <div className="relative">
                           A certification validates the ability to design and deploy scalable, cost-efficient, and reliable systems on AWS. It focuses on architectural best practices, security, and high availability. Ideal for solution architects, it equips candidates to create cloud solutions aligned with business requirements.
-                          <div className="absolute w-3 h-3 bg-blue-600 transform rotate-45 -left-1.5 top-1/2 -translate-y-1/2"></div>
                         </div>
                       </div>
                     </span>
@@ -503,7 +608,6 @@ export function ProfessionalItCv() {
                       <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
                         <div className="relative">
                           This certificate equips Data Protection Officers and professionals with the knowledge and skills to implement and manage data protection programs under the PDPA. It covers key areas like risk management, breach response, and compliance. Certification is co-issued by the PDPC and IAPP, enhancing credibility and expertise in data governance.
-                          <div className="absolute w-3 h-3 bg-blue-600 transform rotate-45 -left-1.5 top-1/2 -translate-y-1/2"></div>
                         </div>
                       </div>
                     </span>
@@ -515,41 +619,9 @@ export function ProfessionalItCv() {
                       <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
                         <div className="relative">
                           This focuses on foundational principles of Lean Six Sigma methodologies, equipping individuals to support process improvement projects. Participants learn to identify waste, improve efficiency, and assist in problem-solving under the guidance of Green or Black Belts. Ideal for team members, it enhances skills in basic quality tools and continuous improvement techniques.
-                          <div className="absolute w-3 h-3 bg-blue-600 transform rotate-45 -left-1.5 top-1/2 -translate-y-1/2"></div>
                         </div>
                       </div>
                     </span>
-                  </li>
-                </ul>
-              </div>
-            </section>
-
-            <section className="mb-12">
-              <h2 className={`text-2xl font-semibold mb-6 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                <BookOpen className="h-6 w-6 mr-3 text-blue-600" />
-                Training
-              </h2>
-              <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow`}>
-                <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                  <li className="flex">
-                    <span className="mr-2">•</span>
-                    <span>ISO/IEC 27001:2022 ISMS Internal Auditor</span>
-                  </li>
-                  <li className="flex">
-                    <span className="mr-2">•</span>
-                    <span>Data Analytics Using Power BI</span>
-                  </li>
-                  <li className="flex">
-                    <span className="mr-2">•</span>
-                    <span>NICF - Microsoft Azure Administrator</span>
-                  </li>
-                  <li className="flex">
-                    <span className="mr-2">•</span>
-                    <span>NICF - Certified Information Systems Auditor</span>
-                  </li>
-                  <li className="flex">
-                    <span className="mr-2">•</span>
-                    <span>Practitioner Certificate in Personal Data Protection (SG)</span>
                   </li>
                 </ul>
               </div>
@@ -561,17 +633,6 @@ export function ProfessionalItCv() {
                 Technical Skills
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow`}>
-                  <h3 className={`text-lg font-medium mb-2 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                    <Shield className="h-5 w-5 mr-2 text-blue-600" />
-                    Compliance
-                  </h3>
-                  <ul className={`list-disc list-inside ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                    <li>PCI-DSS</li>
-                    <li>ISO/IEC 27001:2015</li>
-                    <li>PDPA</li>
-                  </ul>
-                </div>
                 <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow`}>
                   <h3 className={`text-lg font-medium mb-2 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                     <Server className="h-5 w-5 mr-2 text-blue-600" />
@@ -603,6 +664,17 @@ export function ProfessionalItCv() {
                     <li>Python</li>
                     <li>Swift</li>
                     <li>TypeScript</li>
+                  </ul>
+                </div>
+                <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow`}>
+                  <h3 className={`text-lg font-medium mb-2 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                    <Shield className="h-5 w-5 mr-2 text-blue-600" />
+                    Compliance
+                  </h3>
+                  <ul className={`list-disc list-inside ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                    <li>PCI-DSS</li>
+                    <li>ISO/IEC 27001:2015</li>
+                    <li>PDPA</li>
                   </ul>
                 </div>
               </div>
