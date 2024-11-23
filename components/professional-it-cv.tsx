@@ -39,7 +39,7 @@ export function ProfessionalItCv() {
             <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center max-w-5xl mx-auto">
               <div className="relative">
                 <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-1 h-16 bg-blue-400 opacity-50 rounded-full"></div>
-                <h1 className="text-5xl font-bold text-white tracking-tight mb-2">Calvin Wong YF</h1>
+                <h1 className="text-5xl font-bold text-white tracking-tight mb-2">Calvin Wong</h1>
                 <p className="text-xl text-blue-100 font-light tracking-wide">Driving Innovation and Security in IT Operations</p>
               </div>
               
@@ -78,7 +78,7 @@ export function ProfessionalItCv() {
                 solutions that enhance business security and efficiency. My expertise spans cybersecurity risk management,
                 technical design, and strategic project leadership. With a proven track record in IT governance, cloud infrastructure,
                 and cybersecurity frameworks (ISO/IEC 27001, PCI-DSS), I drive seamless business operations while ensuring strong
-                compliance with industry standards. Leveraging my in&apos;depth technical knowledge and strong leadership abilities, I
+                compliance with industry standards. Leveraging my in-depth technical knowledge and strong leadership abilities, I
                 successfully navigate complex IT projects, security initiatives, and data centre operations to guarantee the seamless
                 execution of business objectives.
               </p>
@@ -472,7 +472,11 @@ export function ProfessionalItCv() {
           </main>
 
           <footer className={`px-6 py-4 border-t ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
-            <div className="flex items-center justify-end">
+            <div className="flex items-center justify-between">
+              <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                © {new Date().getFullYear()} Calvin Wong. All rights reserved.
+              </p>
+              
               <button
                 onClick={toggleDarkMode}
                 className={`fixed bottom-6 right-6 p-3 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-lg ${
