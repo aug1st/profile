@@ -39,7 +39,7 @@ export function ProfessionalItCv() {
   // Prevent right-click context menu and show custom message
   const handleContextMenu = (e: React.MouseEvent) => {
     e.preventDefault()
-    alert('Right-click is disabled for content protection.')
+    alert('Oops! No right-clicking here—gotta keep the content safe and sound!')
   }
 
   // Prevent keyboard shortcuts
@@ -54,7 +54,7 @@ export function ProfessionalItCv() {
         case 's':
         case 'p':
           e.preventDefault()
-          alert('Keyboard shortcuts are disabled for content protection.')
+          alert('Nice try, but no keyboard wizardry allowed—gotta keep this content secure!')
           break
       }
     }
@@ -452,13 +452,29 @@ export function ProfessionalItCv() {
                       </div>
                     </span>
                   </li>
-                  <li className="flex">
+                  <li className="flex group relative">
                     <span className="mr-2">•</span>
-                    <span>Practitioner Certificate in Personal Data Protection (SG) (2020)</span>
+                    <span className="relative">
+                      Practitioner Certificate in Personal Data Protection (SG)
+                      <div className="absolute left-0 bottom-full mb-2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
+                        <div className="relative">
+                          This certificate equips Data Protection Officers and professionals with the knowledge and skills to implement and manage data protection programs under the PDPA. It covers key areas like risk management, breach response, and compliance. Certification is co-issued by the PDPC and IAPP, enhancing credibility and expertise in data governance.
+                          <div className="absolute w-3 h-3 bg-blue-600 transform rotate-45 left-4 -bottom-1.5"></div>
+                        </div>
+                      </div>
+                    </span>
                   </li>
-                  <li className="flex">
+                  <li className="flex group relative">
                     <span className="mr-2">•</span>
-                    <span>Lean Six Sigma (LSS) Yellow Belt Certification (2020)</span>
+                    <span className="relative">
+                      Lean Six Sigma (LSS) Yellow Belt Certification (2020)
+                      <div className="absolute left-0 bottom-full mb-2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
+                        <div className="relative">
+                          This focuses on foundational principles of Lean Six Sigma methodologies, equipping individuals to support process improvement projects. Participants learn to identify waste, improve efficiency, and assist in problem-solving under the guidance of Green or Black Belts. Ideal for team members, it enhances skills in basic quality tools and continuous improvement techniques.
+                          <div className="absolute w-3 h-3 bg-blue-600 transform rotate-45 left-4 -bottom-1.5"></div>
+                        </div>
+                      </div>
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -542,7 +558,7 @@ export function ProfessionalItCv() {
                   <ul className={`list-disc list-inside ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                     <li>Python</li>
                     <li>Swift</li>
-                    <li>Next.js</li>
+                    <li>TypeScript</li>
                   </ul>
                 </div>
               </div>
