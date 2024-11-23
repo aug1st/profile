@@ -421,8 +421,8 @@ export function ProfessionalItCv() {
             </section>
 
             <section className="mb-12">
-              <h2 className={`text-2xl font-semibold mb-4 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                <GraduationCap className="h-6 w-6 mr-2 text-blue-600" />
+              <h2 className={`text-2xl font-semibold mb-6 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                <GraduationCap className="h-6 w-6 mr-3 text-blue-600" />
                 Education
               </h2>
               <div className="space-y-4">
@@ -530,6 +530,33 @@ export function ProfessionalItCv() {
                         </div>
                       </div>
                     </span>
+                  </li>
+                </ul>
+              </div>
+            </section>
+
+            <section className="mb-12">
+              <h2 className={`text-2xl font-semibold mb-6 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                <BookOpen className="h-6 w-6 mr-3 text-blue-600" />
+                Training
+              </h2>
+              <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow`}>
+                <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                  <li className="flex">
+                    <span className="mr-2">•</span>
+                    <span>ISO/IEC 27001:2022 ISMS Internal Auditor</span>
+                  </li>
+                  <li className="flex">
+                    <span className="mr-2">•</span>
+                    <span>Data Analytics Using Power BI</span>
+                  </li>
+                  <li className="flex">
+                    <span className="mr-2">•</span>
+                    <span>NICF - Microsoft Azure Administrator</span>
+                  </li>
+                  <li className="flex">
+                    <span className="mr-2">•</span>
+                    <span>NICF - Certified Information Systems Auditor</span>
                   </li>
                 </ul>
               </div>
