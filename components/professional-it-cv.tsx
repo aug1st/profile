@@ -464,10 +464,10 @@ export function ProfessionalItCv() {
                     <span className="mr-2">•</span>
                     <span className="relative">
                       AWS Certified SysOps Administrator – Associate
-                      <div className="absolute left-0 bottom-full mb-2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
+                      <div className="absolute left-full ml-2 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
                         <div className="relative">
                           A certification validates skills in deploying, managing, and operating scalable and fault-tolerant systems on AWS. It focuses on monitoring, security, networking, automation, and operational best practices. Ideal for system administrators, it prepares candidates to manage AWS environments effectively and securely.
-                          <div className="absolute w-3 h-3 bg-blue-600 transform rotate-45 left-4 -bottom-1.5"></div>
+                          <div className="absolute w-3 h-3 bg-blue-600 transform rotate-45 -left-1.5 top-1/2 -translate-y-1/2"></div>
                         </div>
                       </div>
                     </span>
@@ -476,10 +476,10 @@ export function ProfessionalItCv() {
                     <span className="mr-2">•</span>
                     <span className="relative">
                       AWS Certified Developer – Associate
-                      <div className="absolute left-0 bottom-full mb-2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
+                      <div className="absolute left-full ml-2 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
                         <div className="relative">
                           A certification validates proficiency in designing, developing, and deploying cloud-based applications on AWS. It focuses on core AWS services, application security, and troubleshooting. Ideal for developers, it equips candidates to build and optimise scalable, secure, and high-performing cloud applications.
-                          <div className="absolute w-3 h-3 bg-blue-600 transform rotate-45 left-4 -bottom-1.5"></div>
+                          <div className="absolute w-3 h-3 bg-blue-600 transform rotate-45 -left-1.5 top-1/2 -translate-y-1/2"></div>
                         </div>
                       </div>
                     </span>
@@ -488,10 +488,10 @@ export function ProfessionalItCv() {
                     <span className="mr-2">•</span>
                     <span className="relative">
                       AWS Certified Solutions Architect – Associate
-                      <div className="absolute left-0 bottom-full mb-2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
+                      <div className="absolute left-full ml-2 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
                         <div className="relative">
                           A certification validates the ability to design and deploy scalable, cost-efficient, and reliable systems on AWS. It focuses on architectural best practices, security, and high availability. Ideal for solution architects, it equips candidates to create cloud solutions aligned with business requirements.
-                          <div className="absolute w-3 h-3 bg-blue-600 transform rotate-45 left-4 -bottom-1.5"></div>
+                          <div className="absolute w-3 h-3 bg-blue-600 transform rotate-45 -left-1.5 top-1/2 -translate-y-1/2"></div>
                         </div>
                       </div>
                     </span>
@@ -500,10 +500,10 @@ export function ProfessionalItCv() {
                     <span className="mr-2">•</span>
                     <span className="relative">
                       Practitioner Certificate in Personal Data Protection (SG)
-                      <div className="absolute left-0 bottom-full mb-2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
+                      <div className="absolute left-full ml-2 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
                         <div className="relative">
                           This certificate equips Data Protection Officers and professionals with the knowledge and skills to implement and manage data protection programs under the PDPA. It covers key areas like risk management, breach response, and compliance. Certification is co-issued by the PDPC and IAPP, enhancing credibility and expertise in data governance.
-                          <div className="absolute w-3 h-3 bg-blue-600 transform rotate-45 left-4 -bottom-1.5"></div>
+                          <div className="absolute w-3 h-3 bg-blue-600 transform rotate-45 -left-1.5 top-1/2 -translate-y-1/2"></div>
                         </div>
                       </div>
                     </span>
@@ -512,10 +512,10 @@ export function ProfessionalItCv() {
                     <span className="mr-2">•</span>
                     <span className="relative">
                       Lean Six Sigma (LSS) Yellow Belt Certification (2020)
-                      <div className="absolute left-0 bottom-full mb-2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
+                      <div className="absolute left-full ml-2 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
                         <div className="relative">
                           This focuses on foundational principles of Lean Six Sigma methodologies, equipping individuals to support process improvement projects. Participants learn to identify waste, improve efficiency, and assist in problem-solving under the guidance of Green or Black Belts. Ideal for team members, it enhances skills in basic quality tools and continuous improvement techniques.
-                          <div className="absolute w-3 h-3 bg-blue-600 transform rotate-45 left-4 -bottom-1.5"></div>
+                          <div className="absolute w-3 h-3 bg-blue-600 transform rotate-45 -left-1.5 top-1/2 -translate-y-1/2"></div>
                         </div>
                       </div>
                     </span>
