@@ -374,9 +374,17 @@ export function ProfessionalItCv() {
               </h2>
               <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow`}>
                 <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                  <li className="flex">
+                  <li className="flex group relative">
                     <span className="mr-2">•</span>
-                    <span>AWS Certified SysOps Administrator – Associate (2021)</span>
+                    <span className="relative">
+                      AWS Certified SysOps Administrator – Associate
+                      <div className="absolute left-0 bottom-full mb-2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
+                        <div className="relative">
+                          A certification validates skills in deploying, managing, and operating scalable and fault-tolerant systems on AWS. It focuses on monitoring, security, networking, automation, and operational best practices. Ideal for system administrators, it prepares candidates to manage AWS environments effectively and securely.
+                          <div className="absolute w-3 h-3 bg-blue-600 transform rotate-45 left-4 -bottom-1.5"></div>
+                        </div>
+                      </div>
+                    </span>
                   </li>
                   <li className="flex">
                     <span className="mr-2">•</span>
@@ -415,7 +423,7 @@ export function ProfessionalItCv() {
                   </li>
                   <li className="flex">
                     <span className="mr-2">•</span>
-                    <span>NICF- Microsoft Azure Administrator</span>
+                    <span>NICF - Microsoft Azure Administrator</span>
                   </li>
                   <li className="flex">
                     <span className="mr-2">•</span>
