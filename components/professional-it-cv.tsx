@@ -564,7 +564,7 @@ export function ProfessionalItCv() {
               </section>
             </div>
 
-            <section>
+            <section className="mb-12">
               <h2 className={`text-2xl font-semibold mb-4 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 <Code className="h-6 w-6 mr-2 text-blue-600" />
                 Technical Skills
