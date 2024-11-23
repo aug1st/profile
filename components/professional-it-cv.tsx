@@ -45,7 +45,7 @@ export function ProfessionalItCv() {
       oscillator.connect(gainNode)
       gainNode.connect(audioContext.destination)
 
-      oscillator.type = 'sine'
+      oscillator.type = 'square'
       oscillator.frequency.setValueAtTime(800, audioContext.currentTime)
       
       gainNode.gain.setValueAtTime(0.05, audioContext.currentTime)
@@ -475,7 +475,7 @@ export function ProfessionalItCv() {
                   <Award className="h-6 w-6 mr-3 text-blue-600" />
                   Certifications
                 </h2>
-                <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow h-full`}>
+                <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'}`}>
                   <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                     <li className="flex group relative">
                       <span className="mr-2">•</span>
