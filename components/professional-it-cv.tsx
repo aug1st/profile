@@ -7,7 +7,7 @@
 
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Mail, Phone, Linkedin, Award, GraduationCap, Briefcase, BookOpen, User, Moon, Sun, Server, Shield, Code, Database } from 'lucide-react'
 
 export function ProfessionalItCv() {
@@ -36,8 +36,50 @@ export function ProfessionalItCv() {
     }))
   }
 
+  // Prevent right-click context menu and show custom message
+  const handleContextMenu = (e: React.MouseEvent) => {
+    e.preventDefault()
+    alert('Right-click is disabled for content protection.')
+  }
+
+  // Prevent keyboard shortcuts
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    // Check if Control or Command key is pressed
+    if (e.ctrlKey || e.metaKey) {
+      switch (e.key.toLowerCase()) {
+        case 'c':
+        case 'x':
+        case 'u':
+        case 'i':
+        case 's':
+        case 'p':
+          e.preventDefault()
+          alert('Keyboard shortcuts are disabled for content protection.')
+          break
+      }
+    }
+  }
+
+  // Prevent text selection
+  const handleSelect = (e: Event) => {
+    e.preventDefault()
+  }
+
+  // Add event listeners for text selection prevention
+  useEffect(() => {
+    document.addEventListener('selectstart', handleSelect)
+    return () => {
+      document.removeEventListener('selectstart', handleSelect)
+    }
+  }, [])
+
   return (
-    <div className={`min-h-screen ${darkMode ? 'dark bg-gray-900' : 'bg-gray-100'}`}>
+    <div 
+      className={`min-h-screen ${darkMode ? 'dark bg-gray-900' : 'bg-gray-100'}`}
+      onContextMenu={handleContextMenu}
+      onKeyDown={handleKeyDown}
+      tabIndex={0} // Makes the div focusable for keyboard events
+    >
       <div className="py-8 px-4 sm:px-6 lg:px-8">
         <div className={`max-w-5xl mx-auto ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-lg rounded-lg overflow-hidden`}>
           <header className={`px-8 py-12 ${darkMode ? 'bg-gradient-to-r from-gray-800 to-gray-700' : 'bg-gradient-to-r from-blue-900 to-blue-700'} rounded-t-lg relative overflow-hidden`}>
