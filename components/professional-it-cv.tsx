@@ -1,10 +1,20 @@
+/**
+ * ProfessionalItCv Component
+ * Renders a professional IT curriculum vitae with dark mode support
+ * and expandable job sections. Features responsive design and
+ * interactive elements for better user experience.
+ */
+
 'use client'
 
 import React, { useState } from 'react'
 import { Mail, Phone, Linkedin, Award, GraduationCap, Briefcase, BookOpen, User, Moon, Sun, Server, Shield, Code, Database } from 'lucide-react'
 
 export function ProfessionalItCv() {
+  // Controls the dark/light mode theme
   const [darkMode, setDarkMode] = useState(false)
+  
+  // Manages the expansion state of job experience sections
   const [expandedJobs, setExpandedJobs] = useState<{[key: string]: boolean}>({
     hafniaIT: false,
     hafniaFS: false,
@@ -13,10 +23,12 @@ export function ProfessionalItCv() {
     veolia: false
   })
 
+  // Toggles the dark mode theme
   const toggleDarkMode = () => {
     setDarkMode(!darkMode)
   }
 
+  // Toggles the expansion state of a job experience section
   const toggleJob = (jobKey: string) => {
     setExpandedJobs(prev => ({
       ...prev,
@@ -474,7 +486,7 @@ export function ProfessionalItCv() {
           <footer className={`px-6 py-4 border-t ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
             <div className="flex items-center justify-between">
               <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                © {new Date().getFullYear()} Calvin Wong. All rights reserved.
+                &copy; {new Date().getFullYear()} Calvin Wong. All rights reserved.
               </p>
               
               <button
