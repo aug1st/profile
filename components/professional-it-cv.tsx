@@ -39,7 +39,7 @@ export function ProfessionalItCv() {
             <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center max-w-5xl mx-auto">
               <div className="relative">
                 <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-1 h-16 bg-blue-400 opacity-50 rounded-full"></div>
-                <h1 className="text-5xl font-bold text-white tracking-tight mb-2">Calvin Wong</h1>
+                <h1 className="text-5xl font-bold text-white tracking-tight mb-2">Calvin Wong YF</h1>
                 <p className="text-xl text-blue-100 font-light tracking-wide">Driving Innovation and Security in IT Operations</p>
               </div>
               
