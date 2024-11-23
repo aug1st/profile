@@ -14,6 +14,21 @@ export function ProfessionalItCv() {
   // Controls the dark/light mode theme
   const [darkMode, setDarkMode] = useState(false)
   
+  // State for typewriter effect
+  const [text, setText] = useState('')
+  const fullText = 'Driving Innovation and Security in IT Operations'
+  const typingSpeed = 100 // milliseconds per character
+
+  // Typewriter effect
+  useEffect(() => {
+    if (text.length < fullText.length) {
+      const timeout = setTimeout(() => {
+        setText(fullText.slice(0, text.length + 1))
+      }, typingSpeed)
+      return () => clearTimeout(timeout)
+    }
+  }, [text])
+
   // Manages the expansion state of job experience sections
   const [expandedJobs, setExpandedJobs] = useState<{[key: string]: boolean}>({
     hafniaIT: false,
@@ -94,7 +109,10 @@ export function ProfessionalItCv() {
               <div className="relative">
                 <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-1 h-16 bg-blue-400 opacity-50 rounded-full"></div>
                 <h1 className="text-5xl font-bold text-white tracking-tight mb-2">Calvin Wong</h1>
-                <p className="text-xl text-blue-100 font-light tracking-wide">Driving Innovation and Security in IT Operations</p>
+                <p className="text-xl text-blue-100 font-light tracking-wide relative">
+                  {text}
+                  <span className="animate-pulse">|</span>
+                </p>
               </div>
               
               <div className="mt-6 md:mt-0 space-y-3 relative">
