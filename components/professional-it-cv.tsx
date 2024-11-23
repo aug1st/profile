@@ -172,7 +172,7 @@ export function ProfessionalItCv() {
                 Professional Summary
               </h2>
               <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>
-                As an experienced IT leader and cybersecurity expert, I specialize in developing and implementing robust technical
+                As an experienced IT leader and cybersecurity expert, I specialise in developing and implementing robust technical
                 solutions that enhance business security and efficiency. My expertise spans cybersecurity risk management,
                 technical design, and strategic project leadership. With a proven track record in IT governance, cloud infrastructure,
                 and cybersecurity frameworks (ISO/IEC 27001, PCI-DSS), I drive seamless business operations while ensuring strong
