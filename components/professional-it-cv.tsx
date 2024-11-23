@@ -112,6 +112,7 @@ export function ProfessionalItCv() {
   const name = 'Calvin Wong'
 
   const [showInfraModal, setShowInfraModal] = useState(false)
+  const [showComplianceModal, setShowComplianceModal] = useState(false)
 
   return (
     <div 
@@ -579,7 +580,7 @@ export function ProfessionalItCv() {
                       onClick={(e) => e.stopPropagation()}
                     >
                       <div className="flex justify-between items-center mb-6">
-                        <h2 className={`text-2xl font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>Infrastructure Achievements</h2>
+                        <h2 className={`text-2xl font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>Achievements</h2>
                         <button 
                           onClick={() => setShowInfraModal(false)}
                           className={`p-2 rounded-full hover:bg-gray-200 ${darkMode ? 'hover:bg-gray-700' : ''}`}
@@ -638,7 +639,9 @@ export function ProfessionalItCv() {
                     <li>TypeScript</li>
                   </ul>
                 </div>
-                <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow`}>
+                <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow cursor-pointer`}
+                  onClick={() => setShowComplianceModal(true)}
+                >
                   <h3 className={`text-lg font-medium mb-2 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                     <Shield className="h-5 w-5 mr-2 text-blue-600" />
                     Compliance
@@ -649,6 +652,43 @@ export function ProfessionalItCv() {
                     <li>PDPA</li>
                   </ul>
                 </div>
+
+                {showComplianceModal && (
+                  <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50" onClick={() => setShowComplianceModal(false)}>
+                    <div 
+                      className={`max-w-2xl mx-auto p-8 rounded-lg ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-xl`}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <div className="flex justify-between items-center mb-6">
+                        <h2 className={`text-2xl font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>Achievements</h2>
+                        <button 
+                          onClick={() => setShowComplianceModal(false)}
+                          className={`p-2 rounded-full hover:bg-gray-200 ${darkMode ? 'hover:bg-gray-700' : ''}`}
+                        >
+                          <X className="h-6 w-6" />
+                        </button>
+                      </div>
+                      <ul className={`space-y-3 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                        <li className="flex">
+                          <span className="mr-2">•</span>
+                          <span>Conducted organisation-wide PDPA training sessions, increasing employee compliance awareness by 95%.</span>
+                        </li>
+                        <li className="flex">
+                          <span className="mr-2">•</span>
+                          <span>Implemented an ISMS for a startup, achieving ISO/IEC 27001:2015 certification within nine months.</span>
+                        </li>
+                        <li className="flex">
+                          <span className="mr-2">•</span>
+                          <span>Conducted risk assessments that identified and mitigated 80% of critical information security risks.</span>
+                        </li>
+                        <li className="flex">
+                          <span className="mr-2">•</span>
+                          <span>Conducted quarterly vulnerability scans and penetration tests, maintaining a 100% compliance score over three audit cycles.</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                )}
               </div>
             </section>
           </main>
