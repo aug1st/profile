@@ -561,13 +561,14 @@ export function ProfessionalItCv() {
                   className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow cursor-pointer`}
                   onClick={() => setShowInfraModal(true)}
                 >
-                  <h3 className={`text-lg font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Infrastructure</h3>
+                    <h3 className={`text-lg font-medium mb-2 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                    <Server className="h-5 w-5 mr-2 text-blue-600" />
+                    Infrastructure
+                  </h3>
                   <ul className={`list-disc list-inside ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                    <li>AWS</li>
-                    <li>Azure</li>
-                    <li>VMware</li>
-                    <li>Docker</li>
-                    <li>Kubernetes</li>
+                    <li>Cloud (AWS, Azure)</li>
+                    <li>Virtualization</li>
+                    <li>Network Architecture</li>
                   </ul>
                 </div>
 
