@@ -1,5 +1,5 @@
 /**
- * ProfessionalItCv Component
+ * Professional IT CV Component
  * Renders a professional IT curriculum vitae with dark mode support
  * and expandable job sections. Features responsive design and
  * interactive elements for better user experience.
@@ -699,7 +699,7 @@ export function ProfessionalItCv() {
                 &copy; {new Date().getFullYear()} {name}. All rights reserved.
               </p>
               <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                Last Update: November 23, 2024
+                Last Update: November 24, 2024
               </p>
               
               <button
