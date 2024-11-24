@@ -1,8 +1,16 @@
 /**
  * Professional IT CV Component
- * Renders a professional IT curriculum vitae with dark mode support
- * and expandable job sections. Features responsive design and
- * interactive elements for better user experience.
+ * 
+ * A comprehensive curriculum vitae component that showcases professional experience,
+ * skills, and certifications in the IT field. Features include:
+ * - Dark/light mode toggle
+ * - Interactive job experience sections
+ * - Animated typing effect for the headline
+ * - Certification tooltips
+ * - Copy protection
+ * - Responsive design
+ * 
+ * @component
  */
 
 'use client'
@@ -28,14 +36,18 @@ import {
 } from 'lucide-react'
 
 export function ProfessionalItCv() {
-  // Controls the dark/light mode theme
+  // Theme state management
   const [darkMode, setDarkMode] = useState(false)
   
-  // State for typewriter effect
+  /**
+   * Typewriter effect state and configuration
+   * Animates the headline text character by character
+   */
   const [text, setText] = useState('')
   const fullText = 'Driving Innovation and Security in IT Operations'
   const typingSpeed = 100 // milliseconds per character
 
+  // Initialize typewriter effect
   useEffect(() => {
     let currentIndex = 0
     const typingInterval = setInterval(() => {
@@ -50,7 +62,10 @@ export function ProfessionalItCv() {
     return () => clearInterval(typingInterval)
   }, [])
 
-  // Manages the expansion state of job experience sections
+  /**
+   * Job experience section expansion state
+   * Tracks which sections are expanded/collapsed
+   */
   const [expandedJobs, setExpandedJobs] = useState<{[key: string]: boolean}>({
     hafniaIT: false,
     hafniaFS: false,
@@ -59,12 +74,18 @@ export function ProfessionalItCv() {
     veolia: false
   })
 
-  // Toggles the dark mode theme
+  /**
+   * Toggles between dark and light mode
+   * Updates the theme state and applies appropriate styling
+   */
   const toggleDarkMode = () => {
     setDarkMode(!darkMode)
   }
 
-  // Toggles the expansion state of a job experience section
+  /**
+   * Toggles the expansion state of a specific job section
+   * @param jobKey - Identifier for the job section to toggle
+   */
   const toggleJob = (jobKey: string) => {
     setExpandedJobs(prev => ({
       ...prev,
@@ -72,15 +93,19 @@ export function ProfessionalItCv() {
     }))
   }
 
-  // Prevent right-click context menu and show custom message
+  /**
+   * Content protection features
+   * Prevents unauthorized copying and manipulation of content
+   */
+  
+  // Prevent right-click context menu
   const handleContextMenu = (e: React.MouseEvent) => {
     e.preventDefault()
     alert('Oops! No right-clicking here—gotta keep the content safe and sound!')
   }
 
-  // Prevent keyboard shortcuts
+  // Prevent keyboard shortcuts for copying/saving
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    // Check if Control or Command key is pressed
     if (e.ctrlKey || e.metaKey) {
       switch (e.key.toLowerCase()) {
         case 'c':
@@ -101,7 +126,7 @@ export function ProfessionalItCv() {
     e.preventDefault()
   }
 
-  // Add event listeners for text selection prevention
+  // Set up text selection prevention
   useEffect(() => {
     document.addEventListener('selectstart', handleSelect)
     return () => {
@@ -109,8 +134,13 @@ export function ProfessionalItCv() {
     }
   }, [])
 
+  // Personal information
   const name = 'Calvin Wong'
 
+  /**
+   * Modal states for additional information sections
+   * Controls visibility of infrastructure and compliance details
+   */
   const [showInfraModal, setShowInfraModal] = useState(false)
   const [showComplianceModal, setShowComplianceModal] = useState(false)
 
@@ -121,9 +151,14 @@ export function ProfessionalItCv() {
       onKeyDown={handleKeyDown}
       tabIndex={0} // Makes the div focusable for keyboard events
     >
+      {/* Main container with responsive padding */}
       <div className="py-8 px-4 sm:px-6 lg:px-8">
+        {/* CV Card with dark/light mode styling */}
         <div className={`max-w-5xl mx-auto ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-lg rounded-lg overflow-hidden`}>
+          
+          {/* Header Section with gradient background and contact information */}
           <header className={`px-8 py-12 ${darkMode ? 'bg-gradient-to-r from-gray-800 to-gray-700' : 'bg-gradient-to-r from-blue-900 to-blue-700'} rounded-t-lg relative overflow-hidden`}>
+            {/* Decorative dot pattern background */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute inset-0" style={{ 
                 backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
@@ -131,6 +166,7 @@ export function ProfessionalItCv() {
               }}></div>
             </div>
             
+            {/* Header content with name and animated tagline */}
             <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center max-w-5xl mx-auto">
               <div className="relative">
                 <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-1 h-16 bg-blue-400 opacity-50 rounded-full"></div>
@@ -165,7 +201,9 @@ export function ProfessionalItCv() {
             </div>
           </header>
 
+          {/* Main content area */}
           <main className="px-8 py-10">
+            {/* Professional Summary Section */}
             <section className="mb-12">
               <h2 className={`text-2xl font-semibold mb-6 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 <User className="h-6 w-6 mr-3 text-blue-600" />
@@ -182,6 +220,7 @@ export function ProfessionalItCv() {
               </p>
             </section>
 
+            {/* Professional Experience Section with expandable job entries */}
             <section className="mb-12">
               <h2 className={`text-2xl font-semibold mb-4 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 <Briefcase className="h-6 w-6 mr-2 text-blue-600" />
@@ -404,6 +443,7 @@ export function ProfessionalItCv() {
               </div>
             </section>
 
+            {/* Education Section */}
             <section className="mb-12">
               <h2 className={`text-2xl font-semibold mb-6 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 <GraduationCap className="h-6 w-6 mr-3 text-blue-600" />
@@ -453,11 +493,13 @@ export function ProfessionalItCv() {
               </div>
             </section>
 
+            {/* Skills Grid Section */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+              {/* Technical Skills */}
               <section>
                 <h2 className={`text-2xl font-semibold mb-6 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                  <Award className="h-6 w-6 mr-3 text-blue-600" />
-                  Certifications
+                  <Code className="h-6 w-6 mr-2 text-blue-600" />
+                  Technical Skills
                 </h2>
                 <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow`}>
                   <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
@@ -520,10 +562,11 @@ export function ProfessionalItCv() {
                 </div>
               </section>
 
+              {/* Certifications Section with interactive tooltips */}
               <section>
                 <h2 className={`text-2xl font-semibold mb-6 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                  <BookOpen className="h-6 w-6 mr-3 text-blue-600" />
-                  Training
+                  <Award className="h-6 w-6 mr-3 text-blue-600" />
+                  Certifications
                 </h2>
                 <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow`}>
                   <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
@@ -552,6 +595,7 @@ export function ProfessionalItCv() {
               </section>
             </div>
 
+            {/* Technical Skills Section */}
             <section className="mb-12">
               <h2 className={`text-2xl font-semibold mb-4 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 <Code className="h-6 w-6 mr-2 text-blue-600" />
@@ -693,6 +737,7 @@ export function ProfessionalItCv() {
             </section>
           </main>
 
+          {/* Footer with copyright and dark mode toggle */}
           <footer className={`px-6 py-4 border-t ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
             <div className="flex items-center justify-between">
               <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
