@@ -498,8 +498,8 @@ export function ProfessionalItCv() {
               {/* Technical Skills */}
               <section>
                 <h2 className={`text-2xl font-semibold mb-6 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                  <Code className="h-6 w-6 mr-2 text-blue-600" />
-                  Technical Skills
+                  <Award className="h-6 w-6 mr-3 text-blue-600" />
+                  Certifications
                 </h2>
                 <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow`}>
                   <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
@@ -565,8 +565,8 @@ export function ProfessionalItCv() {
               {/* Certifications Section with interactive tooltips */}
               <section>
                 <h2 className={`text-2xl font-semibold mb-6 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                  <Award className="h-6 w-6 mr-3 text-blue-600" />
-                  Certifications
+                  <BookOpen className="h-6 w-6 mr-3 text-blue-600" />
+                  Trainings
                 </h2>
                 <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow`}>
                   <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
