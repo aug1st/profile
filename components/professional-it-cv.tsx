@@ -189,7 +189,7 @@ export function ProfessionalItCv() {
                   <div className="p-2 rounded-full bg-blue-800/30 group-hover:bg-blue-700/50 transition-colors">
                     <Phone className="h-5 w-5" />
                   </div>
-                  <a href="tel:+6588005310" className="ml-3 hover:text-white transition-colors">+65 8800 5310</a>
+                  <a href="https://wa.me/+6588005130" className="ml-3 hover:text-white transition-colors">+65 88OO 531O</a>
                 </div>
                 <div className="flex items-center text-blue-50 hover:text-white transition-colors group">
                   <div className="p-2 rounded-full bg-blue-800/30 group-hover:bg-blue-700/50 transition-colors">
