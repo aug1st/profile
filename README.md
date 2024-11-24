@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Professional Profile Website
+
+A modern, responsive professional profile website built with Next.js and TailwindCSS. This project showcases a professional IT curriculum vitae with interactive features and dark mode support.
+
+## Features
+
+- Dark/Light mode toggle
+- Professional IT CV component
+- Interactive certification tooltips
+- Fully responsive design
+- Fast page loads with Next.js
+- Modern UI with TailwindCSS
+- SEO optimized
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org) - React framework for production
+- [TailwindCSS](https://tailwindcss.com) - Utility-first CSS framework
+- [Lucide Icons](https://lucide.dev) - Beautiful open-source icons
+- [TypeScript](https://www.typescriptlang.org) - Static type checking
+- [Geist Font](https://vercel.com/font) - Modern, professional typography
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
+```bash
+git clone https://github.com/aug1st/profile.git
+cd profile
+```
 
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `/components` - React components including the Professional IT CV
+- `/pages` - Next.js pages and routing
+- `/public` - Static assets
+- `/styles` - Global styles and TailwindCSS configuration
 
-## Learn More
+## Key Components
 
-To learn more about Next.js, take a look at the following resources:
+### Professional IT CV
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The main CV component (`components/professional-it-cv.tsx`) features:
+- Interactive certification section with tooltips
+- Skills categorization
+- Professional experience timeline
+- Education history
+- Responsive design for all devices
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Customization
 
-## Deploy on Vercel
+1. **Theme Colors**: Modify `tailwind.config.js` to customize the color scheme
+2. **Content**: Update the content in component files to personalize your profile
+3. **Styling**: Adjust the TailwindCSS classes in components for custom styling
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## License
+
+MIT License - feel free to use this project for your own profile!
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
