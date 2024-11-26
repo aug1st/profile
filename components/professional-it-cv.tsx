@@ -144,23 +144,6 @@ export function ProfessionalItCv() {
   const [showInfraModal, setShowInfraModal] = useState(false)
   const [showComplianceModal, setShowComplianceModal] = useState(false)
 
-  // IP address state management
-  const [visitorIp, setVisitorIp] = useState<string>('');
-
-  useEffect(() => {
-    const fetchIp = async () => {
-      try {
-        const response = await fetch('/api/get-ip');
-        const data = await response.json();
-        setVisitorIp(data.ip);
-      } catch (error) {
-        console.error('Error fetching IP:', error);
-        setVisitorIp('Unable to fetch IP');
-      }
-    };
-    fetchIp();
-  }, []);
-
   return (
     <div 
       className={`min-h-screen ${darkMode ? 'dark bg-gray-900' : 'bg-gray-100'}`}
@@ -761,10 +744,8 @@ export function ProfessionalItCv() {
                 &copy; {new Date().getFullYear()} {name}. All rights reserved.
               </p>
               <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                Last Update: November 24, 2024
+                Last Update: November 26, 2024
               </p>
-              <p className={`text-xs text-gray-500 mt-1`}>Visitor IP: {visitorIp}</p>
-              
               <button
                 onClick={toggleDarkMode}
                 className={`fixed bottom-6 right-6 p-3 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-lg ${
