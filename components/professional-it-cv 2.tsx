@@ -1,16 +1,8 @@
 /**
- * Professional IT CV Component
- * 
- * A comprehensive curriculum vitae component that showcases professional experience,
- * skills, and certifications in the IT field. Features include:
- * - Dark/light mode toggle
- * - Interactive job experience sections
- * - Animated typing effect for the headline
- * - Certification tooltips
- * - Copy protection
- * - Responsive design
- * 
- * @component
+ * ProfessionalItCv Component
+ * Renders a professional IT curriculum vitae with dark mode support
+ * and expandable job sections. Features responsive design and
+ * interactive elements for better user experience.
  */
 
 'use client'
@@ -36,18 +28,14 @@ import {
 } from 'lucide-react'
 
 export function ProfessionalItCv() {
-  // Theme state management
+  // Controls the dark/light mode theme
   const [darkMode, setDarkMode] = useState(false)
   
-  /**
-   * Typewriter effect state and configuration
-   * Animates the headline text character by character
-   */
+  // State for typewriter effect
   const [text, setText] = useState('')
   const fullText = 'Driving Innovation and Security in IT Operations'
   const typingSpeed = 100 // milliseconds per character
 
-  // Initialize typewriter effect
   useEffect(() => {
     let currentIndex = 0
     const typingInterval = setInterval(() => {
@@ -62,10 +50,7 @@ export function ProfessionalItCv() {
     return () => clearInterval(typingInterval)
   }, [])
 
-  /**
-   * Job experience section expansion state
-   * Tracks which sections are expanded/collapsed
-   */
+  // Manages the expansion state of job experience sections
   const [expandedJobs, setExpandedJobs] = useState<{[key: string]: boolean}>({
     hafniaIT: false,
     hafniaFS: false,
@@ -74,18 +59,12 @@ export function ProfessionalItCv() {
     veolia: false
   })
 
-  /**
-   * Toggles between dark and light mode
-   * Updates the theme state and applies appropriate styling
-   */
+  // Toggles the dark mode theme
   const toggleDarkMode = () => {
     setDarkMode(!darkMode)
   }
 
-  /**
-   * Toggles the expansion state of a specific job section
-   * @param jobKey - Identifier for the job section to toggle
-   */
+  // Toggles the expansion state of a job experience section
   const toggleJob = (jobKey: string) => {
     setExpandedJobs(prev => ({
       ...prev,
@@ -93,19 +72,15 @@ export function ProfessionalItCv() {
     }))
   }
 
-  /**
-   * Content protection features
-   * Prevents unauthorized copying and manipulation of content
-   */
-  
-  // Prevent right-click context menu
+  // Prevent right-click context menu and show custom message
   const handleContextMenu = (e: React.MouseEvent) => {
     e.preventDefault()
     alert('Oops! No right-clicking here—gotta keep the content safe and sound!')
   }
 
-  // Prevent keyboard shortcuts for copying/saving
+  // Prevent keyboard shortcuts
   const handleKeyDown = (e: React.KeyboardEvent) => {
+    // Check if Control or Command key is pressed
     if (e.ctrlKey || e.metaKey) {
       switch (e.key.toLowerCase()) {
         case 'c':
@@ -126,7 +101,7 @@ export function ProfessionalItCv() {
     e.preventDefault()
   }
 
-  // Set up text selection prevention
+  // Add event listeners for text selection prevention
   useEffect(() => {
     document.addEventListener('selectstart', handleSelect)
     return () => {
@@ -134,32 +109,10 @@ export function ProfessionalItCv() {
     }
   }, [])
 
-  // Personal information
   const name = 'Calvin Wong'
 
-  /**
-   * Modal states for additional information sections
-   * Controls visibility of infrastructure and compliance details
-   */
   const [showInfraModal, setShowInfraModal] = useState(false)
   const [showComplianceModal, setShowComplianceModal] = useState(false)
-
-  // IP address state management
-  const [visitorIp, setVisitorIp] = useState<string>('');
-
-  useEffect(() => {
-    const fetchIp = async () => {
-      try {
-        const response = await fetch('/api/get-ip');
-        const data = await response.json();
-        setVisitorIp(data.ip);
-      } catch (error) {
-        console.error('Error fetching IP:', error);
-        setVisitorIp('Unable to fetch IP');
-      }
-    };
-    fetchIp();
-  }, []);
 
   return (
     <div 
@@ -168,14 +121,9 @@ export function ProfessionalItCv() {
       onKeyDown={handleKeyDown}
       tabIndex={0} // Makes the div focusable for keyboard events
     >
-      {/* Main container with responsive padding */}
       <div className="py-8 px-4 sm:px-6 lg:px-8">
-        {/* CV Card with dark/light mode styling */}
         <div className={`max-w-5xl mx-auto ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-lg rounded-lg overflow-hidden`}>
-          
-          {/* Header Section with gradient background and contact information */}
           <header className={`px-8 py-12 ${darkMode ? 'bg-gradient-to-r from-gray-800 to-gray-700' : 'bg-gradient-to-r from-blue-900 to-blue-700'} rounded-t-lg relative overflow-hidden`}>
-            {/* Decorative dot pattern background */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute inset-0" style={{ 
                 backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
@@ -183,7 +131,6 @@ export function ProfessionalItCv() {
               }}></div>
             </div>
             
-            {/* Header content with name and animated tagline */}
             <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center max-w-5xl mx-auto">
               <div className="relative">
                 <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-1 h-16 bg-blue-400 opacity-50 rounded-full"></div>
@@ -206,7 +153,7 @@ export function ProfessionalItCv() {
                   <div className="p-2 rounded-full bg-blue-800/30 group-hover:bg-blue-700/50 transition-colors">
                     <Phone className="h-5 w-5" />
                   </div>
-                  <a href="https://wa.me/+6588005130" className="ml-3 hover:text-white transition-colors">+65 88OO 531O</a>
+                  <a href="tel:+6588005310" className="ml-3 hover:text-white transition-colors">+65 8800 5310</a>
                 </div>
                 <div className="flex items-center text-blue-50 hover:text-white transition-colors group">
                   <div className="p-2 rounded-full bg-blue-800/30 group-hover:bg-blue-700/50 transition-colors">
@@ -218,16 +165,14 @@ export function ProfessionalItCv() {
             </div>
           </header>
 
-          {/* Main content area */}
           <main className="px-8 py-10">
-            {/* Professional Summary Section */}
             <section className="mb-12">
               <h2 className={`text-2xl font-semibold mb-6 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 <User className="h-6 w-6 mr-3 text-blue-600" />
                 Professional Summary
               </h2>
               <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>
-                As an experienced IT leader and cybersecurity expert, I specialise in developing and implementing robust technical
+                As an experienced IT leader and cybersecurity expert, I specialize in developing and implementing robust technical
                 solutions that enhance business security and efficiency. My expertise spans cybersecurity risk management,
                 technical design, and strategic project leadership. With a proven track record in IT governance, cloud infrastructure,
                 and cybersecurity frameworks (ISO/IEC 27001, PCI-DSS), I drive seamless business operations while ensuring strong
@@ -237,7 +182,6 @@ export function ProfessionalItCv() {
               </p>
             </section>
 
-            {/* Professional Experience Section with expandable job entries */}
             <section className="mb-12">
               <h2 className={`text-2xl font-semibold mb-4 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 <Briefcase className="h-6 w-6 mr-2 text-blue-600" />
@@ -460,7 +404,6 @@ export function ProfessionalItCv() {
               </div>
             </section>
 
-            {/* Education Section */}
             <section className="mb-12">
               <h2 className={`text-2xl font-semibold mb-6 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 <GraduationCap className="h-6 w-6 mr-3 text-blue-600" />
@@ -510,9 +453,7 @@ export function ProfessionalItCv() {
               </div>
             </section>
 
-            {/* Skills Grid Section */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-              {/* Technical Skills */}
               <section>
                 <h2 className={`text-2xl font-semibold mb-6 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                   <Award className="h-6 w-6 mr-3 text-blue-600" />
@@ -522,9 +463,9 @@ export function ProfessionalItCv() {
                   <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                     <li className="flex group relative">
                       <span className="mr-2">•</span>
-                      <span className="relative group-hover:text-red-500 transition-colors duration-200">
+                      <span className="relative">
                         AWS Certified SysOps Administrator – Associate
-                        <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-800 text-white text-sm rounded-lg p-4 shadow-lg z-10">
+                        <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
                           <div className="relative">
                             A certification validates skills in deploying, managing, and operating scalable and fault-tolerant systems on AWS. It focuses on monitoring, security, networking, automation, and operational best practices. Ideal for system administrators, it prepares candidates to manage AWS environments effectively and securely.
                           </div>
@@ -533,9 +474,9 @@ export function ProfessionalItCv() {
                     </li>
                     <li className="flex group relative">
                       <span className="mr-2">•</span>
-                      <span className="relative group-hover:text-red-500 transition-colors duration-200">
+                      <span className="relative">
                         AWS Certified Developer – Associate
-                        <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-800 text-white text-sm rounded-lg p-4 shadow-lg z-10">
+                        <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
                           <div className="relative">
                             A certification validates proficiency in designing, developing, and deploying cloud-based applications on AWS. It focuses on core AWS services, application security, and troubleshooting. Ideal for developers, it equips candidates to build and optimise scalable, secure, and high-performing cloud applications.
                           </div>
@@ -544,9 +485,9 @@ export function ProfessionalItCv() {
                     </li>
                     <li className="flex group relative">
                       <span className="mr-2">•</span>
-                      <span className="relative group-hover:text-red-500 transition-colors duration-200">
+                      <span className="relative">
                         AWS Certified Solutions Architect – Associate
-                        <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-800 text-white text-sm rounded-lg p-4 shadow-lg z-10">
+                        <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
                           <div className="relative">
                             A certification validates the ability to design and deploy scalable, cost-efficient, and reliable systems on AWS. It focuses on architectural best practices, security, and high availability. Ideal for solution architects, it equips candidates to create cloud solutions aligned with business requirements.
                           </div>
@@ -555,9 +496,9 @@ export function ProfessionalItCv() {
                     </li>
                     <li className="flex group relative">
                       <span className="mr-2">•</span>
-                      <span className="relative group-hover:text-red-500 transition-colors duration-200">
-                      Practitioner Certificate in Personal Data Protection (SG)
-                        <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-800 text-white text-sm rounded-lg p-4 shadow-lg z-10">
+                      <span className="relative">
+                        Practitioner Certificate in Personal Data Protection (SG)
+                        <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
                           <div className="relative">
                             This certificate equips Data Protection Officers and professionals with the knowledge and skills to implement and manage data protection programs under the PDPA. It covers key areas like risk management, breach response, and compliance. Certification is co-issued by the PDPC and IAPP, enhancing credibility and expertise in data governance.
                           </div>
@@ -566,9 +507,9 @@ export function ProfessionalItCv() {
                     </li>
                     <li className="flex group relative">
                       <span className="mr-2">•</span>
-                      <span className="relative group-hover:text-red-500 transition-colors duration-200">
+                      <span className="relative">
                         Lean Six Sigma (LSS) Yellow Belt Certification (2020)
-                        <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-800 text-white text-sm rounded-lg p-4 shadow-lg z-10">
+                        <div className="absolute left-full ml-8 top-1/2 -translate-y-1/2 hidden group-hover:block w-80 bg-blue-600 text-white text-sm rounded-lg p-4 shadow-lg z-10">
                           <div className="relative">
                             This focuses on foundational principles of Lean Six Sigma methodologies, equipping individuals to support process improvement projects. Participants learn to identify waste, improve efficiency, and assist in problem-solving under the guidance of Green or Black Belts. Ideal for team members, it enhances skills in basic quality tools and continuous improvement techniques.
                           </div>
@@ -579,11 +520,10 @@ export function ProfessionalItCv() {
                 </div>
               </section>
 
-              {/* Certifications Section with interactive tooltips */}
               <section>
                 <h2 className={`text-2xl font-semibold mb-6 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                   <BookOpen className="h-6 w-6 mr-3 text-blue-600" />
-                  Trainings
+                  Training
                 </h2>
                 <div className={`p-6 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow`}>
                   <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
@@ -612,7 +552,6 @@ export function ProfessionalItCv() {
               </section>
             </div>
 
-            {/* Technical Skills Section */}
             <section className="mb-12">
               <h2 className={`text-2xl font-semibold mb-4 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 <Code className="h-6 w-6 mr-2 text-blue-600" />
@@ -754,16 +693,14 @@ export function ProfessionalItCv() {
             </section>
           </main>
 
-          {/* Footer with copyright and dark mode toggle */}
           <footer className={`px-6 py-4 border-t ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
             <div className="flex items-center justify-between">
               <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                 &copy; {new Date().getFullYear()} {name}. All rights reserved.
               </p>
               <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                Last Update: November 24, 2024
+                Last Update: November 23, 2024
               </p>
-              <p className={`text-xs text-gray-500 mt-1`}>Visitor IP: {visitorIp}</p>
               
               <button
                 onClick={toggleDarkMode}
