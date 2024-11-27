@@ -16,28 +16,30 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import {
-  Award,
-  BookOpen,
-  Briefcase,
-  GraduationCap,
-  Code,
-  Mail,
-  Phone,
-  Linkedin,
-  Moon,
-  Sun,
-  User,
-  Server,
-  Database,
-  Shield,
-  X
+import { 
+  Award, 
+  BookOpen, 
+  Briefcase, 
+  Code, 
+  Database, 
+  GraduationCap, 
+  Linkedin, 
+  Mail, 
+  Moon, 
+  Phone, 
+  Server, 
+  Shield, 
+  Sun, 
+  User, 
+  Wrench, 
+  X 
 } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 
 export function ProfessionalItCv() {
   // Theme state management
   const [darkMode, setDarkMode] = useState(false)
+  const [ipAddress, setIpAddress] = useState<string>('')
 
   const logVisitorInfo = async () => {
     try {
@@ -50,25 +52,13 @@ export function ProfessionalItCv() {
       const userAgent = window.navigator.userAgent
       const browser = detectBrowser(userAgent)
       const os = detectOS(userAgent)
-
-      // Get device info
-      const deviceType = /Mobile|Tablet|iPad|iPhone|Android/.test(userAgent) 
-        ? (/Tablet|iPad/.test(userAgent) ? 'tablet' : 'mobile')
-        : 'desktop'
-      const deviceModel = userAgent.match(/\(([^)]+)\)/)?.[1] || 'unknown'
-      
-      // Get timezone
-      const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
       
       // Create visitor log
       const visitorLog = {
         ip,
         timestamp: new Date().toISOString(),
         os,
-        browser,
-        device_type: deviceType,
-        device_model: deviceModel,
-        time_zone: timeZone
+        browser
       }
 
       console.log('Logging visitor:', visitorLog)
@@ -111,7 +101,6 @@ export function ProfessionalItCv() {
   // Log visitor info on component mount
   useEffect(() => {
     logVisitorInfo()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   /**
@@ -135,6 +124,21 @@ export function ProfessionalItCv() {
     }, typingSpeed)
 
     return () => clearInterval(typingInterval)
+  }, [])
+
+  // Fetch IP address on component mount
+  useEffect(() => {
+    const fetchIpAddress = async () => {
+      try {
+        const response = await fetch('https://api.ipify.org?format=json')
+        const data = await response.json()
+        setIpAddress(data.ip)
+      } catch (error) {
+        console.error('Failed to fetch IP address:', error)
+        setIpAddress('Unable to fetch IP')
+      }
+    }
+    fetchIpAddress()
   }, [])
 
   /**
