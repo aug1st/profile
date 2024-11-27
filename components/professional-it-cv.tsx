@@ -15,7 +15,7 @@
 
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { 
   Award, 
   BookOpen, 
@@ -38,9 +38,8 @@ import { supabase } from '../lib/supabase'
 export function ProfessionalItCv() {
   // Theme state management
   const [darkMode, setDarkMode] = useState(false)
-  const [ipAddress, setIpAddress] = useState<string>('')
 
-  const logVisitorInfo = async () => {
+  const logVisitorInfo = useCallback(async () => {
     try {
       // Get IP address
       const ipResponse = await fetch('https://api.ipify.org?format=json')
@@ -76,7 +75,7 @@ export function ProfessionalItCv() {
     } catch (error) {
       console.error('Failed to log visitor info:', error)
     }
-  }
+  }, [])
 
   // Helper functions to detect browser and OS
   const detectBrowser = (userAgent: string): string => {
@@ -100,7 +99,7 @@ export function ProfessionalItCv() {
   // Log visitor info on component mount
   useEffect(() => {
     logVisitorInfo()
-  }, [])
+  }, [logVisitorInfo])
 
   /**
    * Typewriter effect state and configuration
@@ -123,21 +122,6 @@ export function ProfessionalItCv() {
     }, typingSpeed)
 
     return () => clearInterval(typingInterval)
-  }, [])
-
-  // Fetch IP address on component mount
-  useEffect(() => {
-    const fetchIpAddress = async () => {
-      try {
-        const response = await fetch('https://api.ipify.org?format=json')
-        const data = await response.json()
-        setIpAddress(data.ip)
-      } catch (error) {
-        console.error('Failed to fetch IP address:', error)
-        setIpAddress('Unable to fetch IP')
-      }
-    }
-    fetchIpAddress()
   }, [])
 
   /**
@@ -329,7 +313,7 @@ export function ProfessionalItCv() {
                       </li>
                       <li className="flex">
                         <span className="mr-2">•</span>
-                        <span><strong className="text-blue-600 dark:text-blue-400">Achieved 99% System Uptime:</strong> Collaborated with internal teams and external vendors to maintain over 99% system availability, safeguarding business continuity.</span>
+                        <span><strong className="text-blue-600 dark:text-blue-400">Achieved 99% System Uptime:</strong> Collaborated with internal teams and external vendors to maintain over 99% system availability across regional offices.</span>
                       </li>
                       <li className="flex">
                         <span className="mr-2">•</span>
