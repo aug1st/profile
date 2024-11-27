@@ -34,6 +34,7 @@ import {
   Wrench, 
   X 
 } from 'lucide-react'
+import { supabase } from '../lib/supabase'
 
 export function ProfessionalItCv() {
   // Theme state management
@@ -56,18 +57,19 @@ export function ProfessionalItCv() {
       // Create visitor log
       const visitorLog = {
         ip,
-        timestamp: new Date().toLocaleString(),
+        timestamp: new Date().toISOString(),
         os,
         browser
       }
 
-      // Get existing logs
-      const existingLogs = localStorage.getItem('visitorLogs')
-      const logs = existingLogs ? JSON.parse(existingLogs) : []
-      
-      // Add new log and store
-      logs.push(visitorLog)
-      localStorage.setItem('visitorLogs', JSON.stringify(logs))
+      // Store in Supabase
+      const { error } = await supabase
+        .from('visitor_logs')
+        .insert([visitorLog])
+
+      if (error) {
+        console.error('Error storing visitor info:', error)
+      }
     } catch (error) {
       console.error('Failed to log visitor info:', error)
     }
