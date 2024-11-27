@@ -40,6 +40,63 @@ export function ProfessionalItCv() {
   const [darkMode, setDarkMode] = useState(false)
   const [ipAddress, setIpAddress] = useState<string>('')
 
+  const logVisitorInfo = async () => {
+    try {
+      // Get IP address
+      const ipResponse = await fetch('https://api.ipify.org?format=json')
+      const ipData = await ipResponse.json()
+      const ip = ipData.ip
+      setIpAddress(ip)
+
+      // Get browser and OS info
+      const userAgent = window.navigator.userAgent
+      const browser = detectBrowser(userAgent)
+      const os = detectOS(userAgent)
+      
+      // Create visitor log
+      const visitorLog = {
+        ip,
+        timestamp: new Date().toLocaleString(),
+        os,
+        browser
+      }
+
+      // Get existing logs
+      const existingLogs = localStorage.getItem('visitorLogs')
+      const logs = existingLogs ? JSON.parse(existingLogs) : []
+      
+      // Add new log and store
+      logs.push(visitorLog)
+      localStorage.setItem('visitorLogs', JSON.stringify(logs))
+    } catch (error) {
+      console.error('Failed to log visitor info:', error)
+    }
+  }
+
+  // Helper functions to detect browser and OS
+  const detectBrowser = (userAgent: string): string => {
+    if (userAgent.includes('Firefox')) return 'Firefox'
+    if (userAgent.includes('Chrome')) return 'Chrome'
+    if (userAgent.includes('Safari')) return 'Safari'
+    if (userAgent.includes('Edge')) return 'Edge'
+    if (userAgent.includes('Opera')) return 'Opera'
+    return 'Unknown'
+  }
+
+  const detectOS = (userAgent: string): string => {
+    if (userAgent.includes('Windows')) return 'Windows'
+    if (userAgent.includes('Mac')) return 'macOS'
+    if (userAgent.includes('Linux')) return 'Linux'
+    if (userAgent.includes('Android')) return 'Android'
+    if (userAgent.includes('iOS')) return 'iOS'
+    return 'Unknown'
+  }
+
+  // Log visitor info on component mount
+  useEffect(() => {
+    logVisitorInfo()
+  }, [])
+
   /**
    * Typewriter effect state and configuration
    * Animates the headline text character by character
