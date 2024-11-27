@@ -16,30 +16,28 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { 
-  Award, 
-  BookOpen, 
-  Briefcase, 
-  Code, 
-  Database, 
-  GraduationCap, 
-  Linkedin, 
-  Mail, 
-  Moon, 
-  Phone, 
-  Server, 
-  Shield, 
-  Sun, 
-  User, 
-  Wrench, 
-  X 
+import {
+  Award,
+  BookOpen,
+  Briefcase,
+  GraduationCap,
+  Code,
+  Mail,
+  Phone,
+  Linkedin,
+  Moon,
+  Sun,
+  User,
+  Server,
+  Database,
+  Shield,
+  X
 } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 
 export function ProfessionalItCv() {
   // Theme state management
   const [darkMode, setDarkMode] = useState(false)
-  const [ipAddress, setIpAddress] = useState<string>('')
 
   const logVisitorInfo = async () => {
     try {
@@ -113,6 +111,7 @@ export function ProfessionalItCv() {
   // Log visitor info on component mount
   useEffect(() => {
     logVisitorInfo()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   /**
@@ -136,21 +135,6 @@ export function ProfessionalItCv() {
     }, typingSpeed)
 
     return () => clearInterval(typingInterval)
-  }, [])
-
-  // Fetch IP address on component mount
-  useEffect(() => {
-    const fetchIpAddress = async () => {
-      try {
-        const response = await fetch('https://api.ipify.org?format=json')
-        const data = await response.json()
-        setIpAddress(data.ip)
-      } catch (error) {
-        console.error('Failed to fetch IP address:', error)
-        setIpAddress('Unable to fetch IP')
-      }
-    }
-    fetchIpAddress()
   }, [])
 
   /**
