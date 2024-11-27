@@ -47,8 +47,7 @@ export function ProfessionalItCv() {
       const ipResponse = await fetch('https://api.ipify.org?format=json')
       const ipData = await ipResponse.json()
       const ip = ipData.ip
-      setIpAddress(ip)
-
+      
       // Get browser and OS info
       const userAgent = window.navigator.userAgent
       const browser = detectBrowser(userAgent)
@@ -822,9 +821,6 @@ export function ProfessionalItCv() {
             <div className="flex items-center justify-between">
               <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                 &copy; {new Date().getFullYear()} {name}. All rights reserved.
-              </p>
-              <p className="text-sm text-gray-300">
-                IP Address: {ipAddress}
               </p>
               <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                 Last Update: 27.11.2024
