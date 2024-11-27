@@ -43,13 +43,6 @@ interface VisitorLog {
   browser: string;
 }
 
-interface JobEntry {
-  title: string;
-  company: string;
-  period: string;
-  achievements: string[];
-}
-
 interface ExpandedJobs {
   hafniaIT: boolean;
   hafniaFS: boolean;
@@ -57,6 +50,8 @@ interface ExpandedJobs {
   worldKitchen: boolean;
   veolia: boolean;
 }
+
+type JobKey = keyof ExpandedJobs;
 
 export function ProfessionalItCv() {
   // Theme state management
@@ -118,8 +113,8 @@ export function ProfessionalItCv() {
           await new Promise(resolve => setTimeout(resolve, 1000));
         }
       }
-    } catch (error) {
-      if (error.name === 'AbortError') {
+    } catch (error: unknown) {
+      if (error instanceof Error && error.name === 'AbortError') {
         console.log('Request timed out');
       } else {
         console.error('Failed to log visitor info:', error);
@@ -200,7 +195,7 @@ export function ProfessionalItCv() {
    * Toggles the expansion state of a specific job section
    * @param jobKey - Identifier for the job section to toggle
    */
-  const toggleJob = (jobKey: string) => {
+  const toggleJob = (jobKey: JobKey) => {
     setExpandedJobs(prev => ({
       ...prev,
       [jobKey]: !prev[jobKey]
@@ -900,7 +895,7 @@ export function ProfessionalItCv() {
                     : 'bg-white text-gray-800 focus:ring-gray-500 hover:bg-gray-100'
                 }`}
                 aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-                aria-pressed={darkMode}
+                aria-checked={darkMode}
                 role="switch"
               >
                 {darkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
