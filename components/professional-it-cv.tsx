@@ -760,7 +760,10 @@ export function ProfessionalItCv() {
                 &copy; {new Date().getFullYear()} {name}. All rights reserved.
               </p>
               <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                Last Update: 26.11.2024
+                IP Address: {ipAddress}
+              </p>
+              <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                Last Update: 27.11.2024
               </p>
               <button
                 onClick={toggleDarkMode}
@@ -773,9 +776,6 @@ export function ProfessionalItCv() {
               >
                 {darkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
               </button>
-            </div>
-            <div className="text-center text-sm text-gray-500 mt-8 pb-4">
-              Your IP Address: {ipAddress}
             </div>
           </footer>
         </div>
