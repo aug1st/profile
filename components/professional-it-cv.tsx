@@ -35,47 +35,99 @@ import {
 } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 
+// Types and Interfaces
+interface VisitorLog {
+  ip: string;
+  timestamp: string;
+  os: string;
+  browser: string;
+}
+
+interface JobEntry {
+  title: string;
+  company: string;
+  period: string;
+  achievements: string[];
+}
+
+interface ExpandedJobs {
+  hafniaIT: boolean;
+  hafniaFS: boolean;
+  axa: boolean;
+  worldKitchen: boolean;
+  veolia: boolean;
+}
+
 export function ProfessionalItCv() {
   // Theme state management
   const [darkMode, setDarkMode] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const logVisitorInfo = useCallback(async () => {
+    // Prevent multiple simultaneous calls
+    if (isLoading) return;
+    
+    setIsLoading(true);
     try {
-      // Get IP address
-      const ipResponse = await fetch('https://api.ipify.org?format=json')
-      const ipData = await ipResponse.json()
-      const ip = ipData.ip
+      // Get IP address with timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
+      
+      const ipResponse = await fetch('https://api.ipify.org?format=json', {
+        signal: controller.signal
+      });
+      clearTimeout(timeoutId);
+      
+      if (!ipResponse.ok) {
+        throw new Error('Failed to fetch IP');
+      }
+      
+      const ipData = await ipResponse.json();
+      const ip = ipData.ip;
       
       // Get browser and OS info
-      const userAgent = window.navigator.userAgent
-      const browser = detectBrowser(userAgent)
-      const os = detectOS(userAgent)
+      const userAgent = window.navigator.userAgent;
+      const browser = detectBrowser(userAgent);
+      const os = detectOS(userAgent);
       
       // Create visitor log
-      const visitorLog = {
+      const visitorLog: VisitorLog = {
         ip,
         timestamp: new Date().toISOString(),
         os,
         browser
-      }
+      };
 
-      console.log('Logging visitor:', visitorLog)
+      // Store in Supabase with retry logic
+      let retries = 3;
+      while (retries > 0) {
+        try {
+          const { data, error } = await supabase
+            .from('visitor_logs')
+            .insert([visitorLog])
+            .select();
 
-      // Store in Supabase
-      const { data, error } = await supabase
-        .from('visitor_logs')
-        .insert([visitorLog])
-        .select()
-
-      if (error) {
-        console.error('Error storing visitor info:', error)
-      } else {
-        console.log('Successfully logged visitor:', data)
+          if (error) throw error;
+          console.log('Successfully logged visitor:', data);
+          break;
+        } catch (error) {
+          retries--;
+          if (retries === 0) {
+            console.error('Failed to store visitor info after all retries:', error);
+          }
+          await new Promise(resolve => setTimeout(resolve, 1000));
+        }
       }
     } catch (error) {
-      console.error('Failed to log visitor info:', error)
+      if (error.name === 'AbortError') {
+        console.log('Request timed out');
+      } else {
+        console.error('Failed to log visitor info:', error);
+      }
+    } finally {
+      setIsLoading(false);
     }
-  }, [])
+  }, [isLoading]);
 
   // Helper functions to detect browser and OS
   const detectBrowser = (userAgent: string): string => {
@@ -128,7 +180,7 @@ export function ProfessionalItCv() {
    * Job experience section expansion state
    * Tracks which sections are expanded/collapsed
    */
-  const [expandedJobs, setExpandedJobs] = useState<{[key: string]: boolean}>({
+  const [expandedJobs, setExpandedJobs] = useState<ExpandedJobs>({
     hafniaIT: false,
     hafniaFS: false,
     axa: false,
@@ -667,6 +719,8 @@ export function ProfessionalItCv() {
                 <div 
                   className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow cursor-pointer`}
                   onClick={() => setShowInfraModal(true)}
+                  role="button"
+                  tabIndex={0}
                 >
                     <h3 className={`text-lg font-medium mb-2 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                     <Server className="h-5 w-5 mr-2 text-blue-600" />
@@ -680,16 +734,30 @@ export function ProfessionalItCv() {
                 </div>
 
                 {showInfraModal && (
-                  <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50" onClick={() => setShowInfraModal(false)}>
+                  <div 
+                    className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50" 
+                    onClick={() => setShowInfraModal(false)}
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="infra-modal-title"
+                    onKeyDown={(e) => {
+                      if (e.key === 'Escape') {
+                        setShowInfraModal(false);
+                      }
+                    }}
+                    tabIndex={-1}
+                  >
                     <div 
                       className={`max-w-2xl mx-auto p-8 rounded-lg ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-xl`}
                       onClick={(e) => e.stopPropagation()}
+                      role="document"
                     >
                       <div className="flex justify-between items-center mb-6">
-                        <h2 className={`text-2xl font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>Achievements</h2>
+                        <h2 id="infra-modal-title" className={`text-2xl font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>Infrastructure Achievements</h2>
                         <button 
                           onClick={() => setShowInfraModal(false)}
                           className={`p-2 rounded-full hover:bg-gray-200 ${darkMode ? 'hover:bg-gray-700' : ''}`}
+                          aria-label="Close modal"
                         >
                           <X className="h-6 w-6" />
                         </button>
@@ -747,6 +815,8 @@ export function ProfessionalItCv() {
                 </div>
                 <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border ${darkMode ? 'border-gray-600' : 'border-gray-200'} hover:shadow-md transition-shadow cursor-pointer`}
                   onClick={() => setShowComplianceModal(true)}
+                  role="button"
+                  tabIndex={0}
                 >
                   <h3 className={`text-lg font-medium mb-2 flex items-center ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                     <Shield className="h-5 w-5 mr-2 text-blue-600" />
@@ -760,16 +830,30 @@ export function ProfessionalItCv() {
                 </div>
 
                 {showComplianceModal && (
-                  <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50" onClick={() => setShowComplianceModal(false)}>
+                  <div 
+                    className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50" 
+                    onClick={() => setShowComplianceModal(false)}
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="compliance-modal-title"
+                    onKeyDown={(e) => {
+                      if (e.key === 'Escape') {
+                        setShowComplianceModal(false);
+                      }
+                    }}
+                    tabIndex={-1}
+                  >
                     <div 
                       className={`max-w-2xl mx-auto p-8 rounded-lg ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-xl`}
                       onClick={(e) => e.stopPropagation()}
+                      role="document"
                     >
                       <div className="flex justify-between items-center mb-6">
-                        <h2 className={`text-2xl font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>Achievements</h2>
+                        <h2 id="compliance-modal-title" className={`text-2xl font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>Compliance Achievements</h2>
                         <button 
                           onClick={() => setShowComplianceModal(false)}
                           className={`p-2 rounded-full hover:bg-gray-200 ${darkMode ? 'hover:bg-gray-700' : ''}`}
+                          aria-label="Close modal"
                         >
                           <X className="h-6 w-6" />
                         </button>
@@ -816,6 +900,8 @@ export function ProfessionalItCv() {
                     : 'bg-white text-gray-800 focus:ring-gray-500 hover:bg-gray-100'
                 }`}
                 aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+                aria-pressed={darkMode}
+                role="switch"
               >
                 {darkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
               </button>
