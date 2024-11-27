@@ -52,13 +52,25 @@ export function ProfessionalItCv() {
       const userAgent = window.navigator.userAgent
       const browser = detectBrowser(userAgent)
       const os = detectOS(userAgent)
+
+      // Get device info
+      const deviceType = /Mobile|Tablet|iPad|iPhone|Android/.test(userAgent) 
+        ? (/Tablet|iPad/.test(userAgent) ? 'tablet' : 'mobile')
+        : 'desktop'
+      const deviceModel = userAgent.match(/\(([^)]+)\)/)?.[1] || 'unknown'
+      
+      // Get timezone
+      const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
       
       // Create visitor log
       const visitorLog = {
         ip,
         timestamp: new Date().toISOString(),
         os,
-        browser
+        browser,
+        device_type: deviceType,
+        device_model: deviceModel,
+        time_zone: timeZone
       }
 
       console.log('Logging visitor:', visitorLog)

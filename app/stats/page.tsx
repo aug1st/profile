@@ -9,12 +9,17 @@ interface VisitorLog {
   timestamp: string
   os: string
   browser: string
+  device_type: string
+  device_model: string
+  time_zone: string
 }
 
 interface VisitorStats {
   totalVisits: number
   browsers: { [key: string]: number }
   operatingSystems: { [key: string]: number }
+  deviceTypes: { [key: string]: number }
+  timeZones: { [key: string]: number }
   recentVisits: VisitorLog[]
   todayVisits: number
   lastWeekVisits: number
@@ -25,6 +30,8 @@ export default function StatsPage() {
     totalVisits: 0,
     browsers: {},
     operatingSystems: {},
+    deviceTypes: {},
+    timeZones: {},
     recentVisits: [],
     todayVisits: 0,
     lastWeekVisits: 0
@@ -34,30 +41,45 @@ export default function StatsPage() {
   const calculateStats = (logs: VisitorLog[]) => {
     const browsers: { [key: string]: number } = {}
     const operatingSystems: { [key: string]: number } = {}
+    const deviceTypes: { [key: string]: number } = {}
+    const timeZones: { [key: string]: number } = {}
     const now = new Date()
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
-    const lastWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000)
+    const weekAgo = new Date(today)
+    weekAgo.setDate(weekAgo.getDate() - 7)
     
     let todayCount = 0
     let weekCount = 0
-
+    
     logs.forEach(log => {
+      // Count browsers
       browsers[log.browser] = (browsers[log.browser] || 0) + 1
+      
+      // Count operating systems
       operatingSystems[log.os] = (operatingSystems[log.os] || 0) + 1
       
-      const visitDate = new Date(log.timestamp)
-      if (visitDate >= today) {
+      // Count device types
+      deviceTypes[log.device_type] = (deviceTypes[log.device_type] || 0) + 1
+      
+      // Count time zones
+      timeZones[log.time_zone] = (timeZones[log.time_zone] || 0) + 1
+      
+      // Count today's and week's visits
+      const logDate = new Date(log.timestamp)
+      if (logDate >= today) {
         todayCount++
       }
-      if (visitDate >= lastWeek) {
+      if (logDate >= weekAgo) {
         weekCount++
       }
     })
-
+    
     return {
       totalVisits: logs.length,
       browsers,
       operatingSystems,
+      deviceTypes,
+      timeZones,
       recentVisits: logs.slice(0, 50),
       todayVisits: todayCount,
       lastWeekVisits: weekCount
@@ -208,43 +230,81 @@ export default function StatsPage() {
           </div>
         </div>
 
+        {/* Device Types Distribution */}
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Device Types</h2>
+          <div className="space-y-4">
+            {Object.entries(stats.deviceTypes).map(([type, count]) => (
+              <div key={type}>
+                <div className="flex justify-between text-sm text-gray-600 dark:text-gray-300 mb-1">
+                  <span>{type}</span>
+                  <span>{count} ({getPercentChange(count, stats.totalVisits)}%)</span>
+                </div>
+                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                  <div
+                    className="bg-blue-600 h-2 rounded-full"
+                    style={{ width: `${(count / stats.totalVisits) * 100}%` }}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Time Zones Distribution */}
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Time Zones</h2>
+          <div className="space-y-4">
+            {Object.entries(stats.timeZones).map(([zone, count]) => (
+              <div key={zone}>
+                <div className="flex justify-between text-sm text-gray-600 dark:text-gray-300 mb-1">
+                  <span>{zone}</span>
+                  <span>{count} ({getPercentChange(count, stats.totalVisits)}%)</span>
+                </div>
+                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                  <div
+                    className="bg-green-600 h-2 rounded-full"
+                    style={{ width: `${(count / stats.totalVisits) * 100}%` }}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Recent Visits Table */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
           <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-            <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">Recent Visits</h2>
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Recent Visits</h2>
           </div>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
               <thead className="bg-gray-50 dark:bg-gray-900">
                 <tr>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                    Date & Time
-                  </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                    IP Address
-                  </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                    Browser
-                  </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                    OS
-                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Time</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Device</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">OS</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Browser</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Time Zone</th>
                 </tr>
               </thead>
               <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                {stats.recentVisits.map((log) => (
-                  <tr key={log.id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">
-                      {new Date(log.timestamp).toLocaleString()}
+                {stats.recentVisits.map((visit) => (
+                  <tr key={visit.id}>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                      {new Date(visit.timestamp).toLocaleString()}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">
-                      {log.ip}
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                      {visit.device_type} ({visit.device_model})
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">
-                      {log.browser}
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                      {visit.os}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">
-                      {log.os}
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                      {visit.browser}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                      {visit.time_zone}
                     </td>
                   </tr>
                 ))}
