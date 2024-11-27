@@ -62,13 +62,18 @@ export function ProfessionalItCv() {
         browser
       }
 
+      console.log('Logging visitor:', visitorLog)
+
       // Store in Supabase
-      const { error } = await supabase
+      const { data, error } = await supabase
         .from('visitor_logs')
         .insert([visitorLog])
+        .select()
 
       if (error) {
         console.error('Error storing visitor info:', error)
+      } else {
+        console.log('Successfully logged visitor:', data)
       }
     } catch (error) {
       console.error('Failed to log visitor info:', error)

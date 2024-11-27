@@ -47,6 +47,7 @@ export default function StatsPage() {
   useEffect(() => {
     async function fetchLogs() {
       try {
+        console.log('Fetching visitor logs...')
         const { data, error } = await supabase
           .from('visitor_logs')
           .select('*')
@@ -57,6 +58,7 @@ export default function StatsPage() {
           return
         }
 
+        console.log('Fetched logs:', data)
         setStats(calculateStats(data || []))
       } catch (error) {
         console.error('Failed to fetch logs:', error)
@@ -72,7 +74,10 @@ export default function StatsPage() {
       .channel('visitor_logs_changes')
       .on('postgres_changes', 
         { event: '*', schema: 'public', table: 'visitor_logs' }, 
-        () => fetchLogs()
+        (payload) => {
+          console.log('Received real-time update:', payload)
+          fetchLogs()
+        }
       )
       .subscribe()
 
