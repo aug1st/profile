@@ -38,7 +38,8 @@ import {
 export function ProfessionalItCv() {
   // Theme state management
   const [darkMode, setDarkMode] = useState(false)
-  
+  const [ipAddress, setIpAddress] = useState<string>('')
+
   /**
    * Typewriter effect state and configuration
    * Animates the headline text character by character
@@ -60,6 +61,20 @@ export function ProfessionalItCv() {
     }, typingSpeed)
 
     return () => clearInterval(typingInterval)
+  }, [])
+
+  // Fetch IP address on component mount
+  useEffect(() => {
+    const fetchIpAddress = async () => {
+      try {
+        const response = await fetch('/api/ip')
+        const data = await response.json()
+        setIpAddress(data.ip)
+      } catch (error) {
+        console.error('Failed to fetch IP address:', error)
+      }
+    }
+    fetchIpAddress()
   }, [])
 
   /**
@@ -744,7 +759,7 @@ export function ProfessionalItCv() {
                 &copy; {new Date().getFullYear()} {name}. All rights reserved.
               </p>
               <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                Last Update: November 26, 2024
+                Last Update: 26.11.2024
               </p>
               <button
                 onClick={toggleDarkMode}
@@ -757,6 +772,9 @@ export function ProfessionalItCv() {
               >
                 {darkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
               </button>
+            </div>
+            <div className="text-center text-sm text-gray-500 mt-8 pb-4">
+              Your IP Address: {ipAddress}
             </div>
           </footer>
         </div>
