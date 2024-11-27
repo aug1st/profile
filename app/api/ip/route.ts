@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server'
 import { headers } from 'next/headers'
 
+// Mark this route as dynamic
+export const dynamic = 'force-dynamic'
+
 export async function GET() {
   const headersList = headers()
   
