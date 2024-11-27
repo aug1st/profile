@@ -759,7 +759,7 @@ export function ProfessionalItCv() {
               <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                 &copy; {new Date().getFullYear()} {name}. All rights reserved.
               </p>
-              <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+              <p className="text-sm text-gray-300">
                 IP Address: {ipAddress}
               </p>
               <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
